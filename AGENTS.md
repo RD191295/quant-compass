@@ -8,3 +8,9 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Research architecture
+- All research data passes through the typed ResearchProvider interface and centralized query options; the separate mock adapter is the default so a verified provider can replace it without page redesign.
+- Use Recharts for research charts and the shared shadcn-based StockTable for sortable equity views to keep visuals and interactions consistent.
+- Content pages use file-based TanStack routes with individual metadata, shared loaders, and a root research shell to preserve navigation and loading boundaries.
+- Keep backend quantitative models outside browser code; frontend research outputs are supplied, precomputed data only.
