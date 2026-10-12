@@ -4,5 +4,5 @@ export interface FactorScore { name: string; score: number; change: number }
 export interface ApiError { code: string; message: string; retryable: boolean }
 export interface MarketIndex { name: string; symbol: string; value: string; change: string; positive: boolean; points: number[] }
 export interface Sector { name: string; change: number; advances: number; declines: number }
-export interface ResearchData { instruments: Instrument[]; prices: DailyPrice[]; factors: FactorScore[]; indices: MarketIndex[]; sectors: Sector[]; timestamp: string; quality: 'mock'; }
+export interface ResearchData { instruments: Instrument[]; prices: DailyPrice[]; instrumentPrices: Record<string, DailyPrice[]>; indexPrices: Record<string, DailyPrice[]>; factors: FactorScore[]; indices: MarketIndex[]; sectors: Sector[]; timestamp: string; quality: 'mock'; }
 export interface ResearchProvider { getResearch(): Promise<ResearchData> }
