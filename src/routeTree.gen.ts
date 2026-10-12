@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CopilotRouteImport } from './routes/copilot'
+import { Route as LabRouteImport } from './routes/lab'
+import { Route as RankingsRouteImport } from './routes/rankings'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as ScreenerRouteImport } from './routes/screener'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as StocksRouteImport } from './routes/stocks'
+import { Route as WatchlistsRouteImport } from './routes/watchlists'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CopilotRoute = CopilotRouteImport.update({
+  id: '/copilot',
+  path: '/copilot',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabRoute = LabRouteImport.update({
+  id: '/lab',
+  path: '/lab',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RankingsRoute = RankingsRouteImport.update({
+  id: '/rankings',
+  path: '/rankings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScreenerRoute = ScreenerRouteImport.update({
+  id: '/screener',
+  path: '/screener',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StocksRoute = StocksRouteImport.update({
+  id: '/stocks',
+  path: '/stocks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WatchlistsRoute = WatchlistsRouteImport.update({
+  id: '/watchlists',
+  path: '/watchlists',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/copilot': typeof CopilotRoute
+  '/lab': typeof LabRoute
+  '/rankings': typeof RankingsRoute
+  '/reports': typeof ReportsRoute
+  '/screener': typeof ScreenerRoute
+  '/settings': typeof SettingsRoute
+  '/stocks': typeof StocksRoute
+  '/watchlists': typeof WatchlistsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/copilot': typeof CopilotRoute
+  '/lab': typeof LabRoute
+  '/rankings': typeof RankingsRoute
+  '/reports': typeof ReportsRoute
+  '/screener': typeof ScreenerRoute
+  '/settings': typeof SettingsRoute
+  '/stocks': typeof StocksRoute
+  '/watchlists': typeof WatchlistsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/copilot': typeof CopilotRoute
+  '/lab': typeof LabRoute
+  '/rankings': typeof RankingsRoute
+  '/reports': typeof ReportsRoute
+  '/screener': typeof ScreenerRoute
+  '/settings': typeof SettingsRoute
+  '/stocks': typeof StocksRoute
+  '/watchlists': typeof WatchlistsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/copilot'
+    | '/lab'
+    | '/rankings'
+    | '/reports'
+    | '/screener'
+    | '/settings'
+    | '/stocks'
+    | '/watchlists'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/copilot'
+    | '/lab'
+    | '/rankings'
+    | '/reports'
+    | '/screener'
+    | '/settings'
+    | '/stocks'
+    | '/watchlists'
+  id:
+    | '__root__'
+    | '/'
+    | '/copilot'
+    | '/lab'
+    | '/rankings'
+    | '/reports'
+    | '/screener'
+    | '/settings'
+    | '/stocks'
+    | '/watchlists'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CopilotRoute: typeof CopilotRoute
+  LabRoute: typeof LabRoute
+  RankingsRoute: typeof RankingsRoute
+  ReportsRoute: typeof ReportsRoute
+  ScreenerRoute: typeof ScreenerRoute
+  SettingsRoute: typeof SettingsRoute
+  StocksRoute: typeof StocksRoute
+  WatchlistsRoute: typeof WatchlistsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/copilot': {
+      id: '/copilot'
+      path: '/copilot'
+      fullPath: '/copilot'
+      preLoaderRoute: typeof CopilotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab': {
+      id: '/lab'
+      path: '/lab'
+      fullPath: '/lab'
+      preLoaderRoute: typeof LabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rankings': {
+      id: '/rankings'
+      path: '/rankings'
+      fullPath: '/rankings'
+      preLoaderRoute: typeof RankingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/screener': {
+      id: '/screener'
+      path: '/screener'
+      fullPath: '/screener'
+      preLoaderRoute: typeof ScreenerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/stocks': {
+      id: '/stocks'
+      path: '/stocks'
+      fullPath: '/stocks'
+      preLoaderRoute: typeof StocksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/watchlists': {
+      id: '/watchlists'
+      path: '/watchlists'
+      fullPath: '/watchlists'
+      preLoaderRoute: typeof WatchlistsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CopilotRoute: CopilotRoute,
+  LabRoute: LabRoute,
+  RankingsRoute: RankingsRoute,
+  ReportsRoute: ReportsRoute,
+  ScreenerRoute: ScreenerRoute,
+  SettingsRoute: SettingsRoute,
+  StocksRoute: StocksRoute,
+  WatchlistsRoute: WatchlistsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
