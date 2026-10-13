@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1791862698785,
+      "tag": "0000_accounts_watchlists_research",
+      "breakpoints": true
+    }
+  ]
+}
