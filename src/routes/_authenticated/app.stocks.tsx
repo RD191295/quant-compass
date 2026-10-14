@@ -4,7 +4,7 @@ import { pageHead, researchQuery } from '@/lib/research/api';
 import { LoadingState, ResearchError } from '@/components/research/common';
 
 export const Route = createFileRoute('/_authenticated/app/stocks')({
-  validateSearch: (s: Record<string, unknown>): { symbol?: string } => ({ symbol: typeof s.symbol === 'string' ? s.symbol : undefined }),
+  validateSearch: (s: Record<string, unknown>): { symbol?: string } => (typeof s['symbol'] === 'string' ? { symbol: s['symbol'] } : {}),
   head: () => pageHead('Stock Research'),
   loader: ({ context }) => context.queryClient.ensureQueryData(researchQuery),
   pendingComponent: LoadingState,
@@ -14,5 +14,5 @@ export const Route = createFileRoute('/_authenticated/app/stocks')({
 
 function StockRoute() {
   const { symbol } = Route.useSearch();
-  return <StockResearchPage key={symbol} symbol={symbol} />;
+  return <StockResearchPage key={symbol ?? ''} {...(symbol ? { symbol } : {})} />;
 }
