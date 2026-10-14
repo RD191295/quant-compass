@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as CopilotRouteImport } from './routes/copilot'
 import { Route as LabRouteImport } from './routes/lab'
 import { Route as RankingsRouteImport } from './routes/rankings'
@@ -18,10 +19,26 @@ import { Route as ScreenerRouteImport } from './routes/screener'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as StocksRouteImport } from './routes/stocks'
 import { Route as WatchlistsRouteImport } from './routes/watchlists'
+import { Route as AuthenticatedAppRouteImport } from './routes/_authenticated/app'
+import { Route as AuthenticatedAppIndexRouteImport } from './routes/_authenticated/app.index'
+import { Route as AuthenticatedAppCopilotRouteImport } from './routes/_authenticated/app.copilot'
+import { Route as AuthenticatedAppLabRouteImport } from './routes/_authenticated/app.lab'
+import { Route as AuthenticatedAppOptionsRouteImport } from './routes/_authenticated/app.options'
+import { Route as AuthenticatedAppRankingsRouteImport } from './routes/_authenticated/app.rankings'
+import { Route as AuthenticatedAppReportsRouteImport } from './routes/_authenticated/app.reports'
+import { Route as AuthenticatedAppSavedRouteImport } from './routes/_authenticated/app.saved'
+import { Route as AuthenticatedAppScreenerRouteImport } from './routes/_authenticated/app.screener'
+import { Route as AuthenticatedAppSettingsRouteImport } from './routes/_authenticated/app.settings'
+import { Route as AuthenticatedAppStocksRouteImport } from './routes/_authenticated/app.stocks'
+import { Route as AuthenticatedAppWatchlistsRouteImport } from './routes/_authenticated/app.watchlists'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CopilotRoute = CopilotRouteImport.update({
@@ -64,6 +81,70 @@ const WatchlistsRoute = WatchlistsRouteImport.update({
   path: '/watchlists',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAppRoute = AuthenticatedAppRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAppIndexRoute = AuthenticatedAppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAppRoute,
+} as any)
+const AuthenticatedAppCopilotRoute = AuthenticatedAppCopilotRouteImport.update({
+  id: '/copilot',
+  path: '/copilot',
+  getParentRoute: () => AuthenticatedAppRoute,
+} as any)
+const AuthenticatedAppLabRoute = AuthenticatedAppLabRouteImport.update({
+  id: '/lab',
+  path: '/lab',
+  getParentRoute: () => AuthenticatedAppRoute,
+} as any)
+const AuthenticatedAppOptionsRoute = AuthenticatedAppOptionsRouteImport.update({
+  id: '/options',
+  path: '/options',
+  getParentRoute: () => AuthenticatedAppRoute,
+} as any)
+const AuthenticatedAppRankingsRoute =
+  AuthenticatedAppRankingsRouteImport.update({
+    id: '/rankings',
+    path: '/rankings',
+    getParentRoute: () => AuthenticatedAppRoute,
+  } as any)
+const AuthenticatedAppReportsRoute = AuthenticatedAppReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => AuthenticatedAppRoute,
+} as any)
+const AuthenticatedAppSavedRoute = AuthenticatedAppSavedRouteImport.update({
+  id: '/saved',
+  path: '/saved',
+  getParentRoute: () => AuthenticatedAppRoute,
+} as any)
+const AuthenticatedAppScreenerRoute =
+  AuthenticatedAppScreenerRouteImport.update({
+    id: '/screener',
+    path: '/screener',
+    getParentRoute: () => AuthenticatedAppRoute,
+  } as any)
+const AuthenticatedAppSettingsRoute =
+  AuthenticatedAppSettingsRouteImport.update({
+    id: '/settings',
+    path: '/settings',
+    getParentRoute: () => AuthenticatedAppRoute,
+  } as any)
+const AuthenticatedAppStocksRoute = AuthenticatedAppStocksRouteImport.update({
+  id: '/stocks',
+  path: '/stocks',
+  getParentRoute: () => AuthenticatedAppRoute,
+} as any)
+const AuthenticatedAppWatchlistsRoute =
+  AuthenticatedAppWatchlistsRouteImport.update({
+    id: '/watchlists',
+    path: '/watchlists',
+    getParentRoute: () => AuthenticatedAppRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -75,6 +156,18 @@ export interface FileRoutesByFullPath {
   '/settings': typeof SettingsRoute
   '/stocks': typeof StocksRoute
   '/watchlists': typeof WatchlistsRoute
+  '/app': typeof AuthenticatedAppRouteWithChildren
+  '/app/copilot': typeof AuthenticatedAppCopilotRoute
+  '/app/lab': typeof AuthenticatedAppLabRoute
+  '/app/options': typeof AuthenticatedAppOptionsRoute
+  '/app/rankings': typeof AuthenticatedAppRankingsRoute
+  '/app/reports': typeof AuthenticatedAppReportsRoute
+  '/app/saved': typeof AuthenticatedAppSavedRoute
+  '/app/screener': typeof AuthenticatedAppScreenerRoute
+  '/app/settings': typeof AuthenticatedAppSettingsRoute
+  '/app/stocks': typeof AuthenticatedAppStocksRoute
+  '/app/watchlists': typeof AuthenticatedAppWatchlistsRoute
+  '/app/': typeof AuthenticatedAppIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -86,10 +179,22 @@ export interface FileRoutesByTo {
   '/settings': typeof SettingsRoute
   '/stocks': typeof StocksRoute
   '/watchlists': typeof WatchlistsRoute
+  '/app/copilot': typeof AuthenticatedAppCopilotRoute
+  '/app/lab': typeof AuthenticatedAppLabRoute
+  '/app/options': typeof AuthenticatedAppOptionsRoute
+  '/app/rankings': typeof AuthenticatedAppRankingsRoute
+  '/app/reports': typeof AuthenticatedAppReportsRoute
+  '/app/saved': typeof AuthenticatedAppSavedRoute
+  '/app/screener': typeof AuthenticatedAppScreenerRoute
+  '/app/settings': typeof AuthenticatedAppSettingsRoute
+  '/app/stocks': typeof AuthenticatedAppStocksRoute
+  '/app/watchlists': typeof AuthenticatedAppWatchlistsRoute
+  '/app': typeof AuthenticatedAppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/copilot': typeof CopilotRoute
   '/lab': typeof LabRoute
   '/rankings': typeof RankingsRoute
@@ -98,6 +203,18 @@ export interface FileRoutesById {
   '/settings': typeof SettingsRoute
   '/stocks': typeof StocksRoute
   '/watchlists': typeof WatchlistsRoute
+  '/_authenticated/app': typeof AuthenticatedAppRouteWithChildren
+  '/_authenticated/app/copilot': typeof AuthenticatedAppCopilotRoute
+  '/_authenticated/app/lab': typeof AuthenticatedAppLabRoute
+  '/_authenticated/app/options': typeof AuthenticatedAppOptionsRoute
+  '/_authenticated/app/rankings': typeof AuthenticatedAppRankingsRoute
+  '/_authenticated/app/reports': typeof AuthenticatedAppReportsRoute
+  '/_authenticated/app/saved': typeof AuthenticatedAppSavedRoute
+  '/_authenticated/app/screener': typeof AuthenticatedAppScreenerRoute
+  '/_authenticated/app/settings': typeof AuthenticatedAppSettingsRoute
+  '/_authenticated/app/stocks': typeof AuthenticatedAppStocksRoute
+  '/_authenticated/app/watchlists': typeof AuthenticatedAppWatchlistsRoute
+  '/_authenticated/app/': typeof AuthenticatedAppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +228,18 @@ export interface FileRouteTypes {
     | '/settings'
     | '/stocks'
     | '/watchlists'
+    | '/app'
+    | '/app/copilot'
+    | '/app/lab'
+    | '/app/options'
+    | '/app/rankings'
+    | '/app/reports'
+    | '/app/saved'
+    | '/app/screener'
+    | '/app/settings'
+    | '/app/stocks'
+    | '/app/watchlists'
+    | '/app/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -122,9 +251,21 @@ export interface FileRouteTypes {
     | '/settings'
     | '/stocks'
     | '/watchlists'
+    | '/app/copilot'
+    | '/app/lab'
+    | '/app/options'
+    | '/app/rankings'
+    | '/app/reports'
+    | '/app/saved'
+    | '/app/screener'
+    | '/app/settings'
+    | '/app/stocks'
+    | '/app/watchlists'
+    | '/app'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/copilot'
     | '/lab'
     | '/rankings'
@@ -133,10 +274,23 @@ export interface FileRouteTypes {
     | '/settings'
     | '/stocks'
     | '/watchlists'
+    | '/_authenticated/app'
+    | '/_authenticated/app/copilot'
+    | '/_authenticated/app/lab'
+    | '/_authenticated/app/options'
+    | '/_authenticated/app/rankings'
+    | '/_authenticated/app/reports'
+    | '/_authenticated/app/saved'
+    | '/_authenticated/app/screener'
+    | '/_authenticated/app/settings'
+    | '/_authenticated/app/stocks'
+    | '/_authenticated/app/watchlists'
+    | '/_authenticated/app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   CopilotRoute: typeof CopilotRoute
   LabRoute: typeof LabRoute
   RankingsRoute: typeof RankingsRoute
@@ -154,6 +308,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/copilot': {
@@ -212,11 +373,138 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WatchlistsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/app': {
+      id: '/_authenticated/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AuthenticatedAppRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/app/': {
+      id: '/_authenticated/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AuthenticatedAppIndexRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/copilot': {
+      id: '/_authenticated/app/copilot'
+      path: '/copilot'
+      fullPath: '/app/copilot'
+      preLoaderRoute: typeof AuthenticatedAppCopilotRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/lab': {
+      id: '/_authenticated/app/lab'
+      path: '/lab'
+      fullPath: '/app/lab'
+      preLoaderRoute: typeof AuthenticatedAppLabRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/options': {
+      id: '/_authenticated/app/options'
+      path: '/options'
+      fullPath: '/app/options'
+      preLoaderRoute: typeof AuthenticatedAppOptionsRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/rankings': {
+      id: '/_authenticated/app/rankings'
+      path: '/rankings'
+      fullPath: '/app/rankings'
+      preLoaderRoute: typeof AuthenticatedAppRankingsRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/reports': {
+      id: '/_authenticated/app/reports'
+      path: '/reports'
+      fullPath: '/app/reports'
+      preLoaderRoute: typeof AuthenticatedAppReportsRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/saved': {
+      id: '/_authenticated/app/saved'
+      path: '/saved'
+      fullPath: '/app/saved'
+      preLoaderRoute: typeof AuthenticatedAppSavedRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/screener': {
+      id: '/_authenticated/app/screener'
+      path: '/screener'
+      fullPath: '/app/screener'
+      preLoaderRoute: typeof AuthenticatedAppScreenerRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/settings': {
+      id: '/_authenticated/app/settings'
+      path: '/settings'
+      fullPath: '/app/settings'
+      preLoaderRoute: typeof AuthenticatedAppSettingsRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/stocks': {
+      id: '/_authenticated/app/stocks'
+      path: '/stocks'
+      fullPath: '/app/stocks'
+      preLoaderRoute: typeof AuthenticatedAppStocksRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/watchlists': {
+      id: '/_authenticated/app/watchlists'
+      path: '/watchlists'
+      fullPath: '/app/watchlists'
+      preLoaderRoute: typeof AuthenticatedAppWatchlistsRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
   }
 }
 
+interface AuthenticatedAppRouteChildren {
+  AuthenticatedAppCopilotRoute: typeof AuthenticatedAppCopilotRoute
+  AuthenticatedAppLabRoute: typeof AuthenticatedAppLabRoute
+  AuthenticatedAppOptionsRoute: typeof AuthenticatedAppOptionsRoute
+  AuthenticatedAppRankingsRoute: typeof AuthenticatedAppRankingsRoute
+  AuthenticatedAppReportsRoute: typeof AuthenticatedAppReportsRoute
+  AuthenticatedAppSavedRoute: typeof AuthenticatedAppSavedRoute
+  AuthenticatedAppScreenerRoute: typeof AuthenticatedAppScreenerRoute
+  AuthenticatedAppSettingsRoute: typeof AuthenticatedAppSettingsRoute
+  AuthenticatedAppStocksRoute: typeof AuthenticatedAppStocksRoute
+  AuthenticatedAppWatchlistsRoute: typeof AuthenticatedAppWatchlistsRoute
+  AuthenticatedAppIndexRoute: typeof AuthenticatedAppIndexRoute
+}
+
+const AuthenticatedAppRouteChildren: AuthenticatedAppRouteChildren = {
+  AuthenticatedAppCopilotRoute: AuthenticatedAppCopilotRoute,
+  AuthenticatedAppLabRoute: AuthenticatedAppLabRoute,
+  AuthenticatedAppOptionsRoute: AuthenticatedAppOptionsRoute,
+  AuthenticatedAppRankingsRoute: AuthenticatedAppRankingsRoute,
+  AuthenticatedAppReportsRoute: AuthenticatedAppReportsRoute,
+  AuthenticatedAppSavedRoute: AuthenticatedAppSavedRoute,
+  AuthenticatedAppScreenerRoute: AuthenticatedAppScreenerRoute,
+  AuthenticatedAppSettingsRoute: AuthenticatedAppSettingsRoute,
+  AuthenticatedAppStocksRoute: AuthenticatedAppStocksRoute,
+  AuthenticatedAppWatchlistsRoute: AuthenticatedAppWatchlistsRoute,
+  AuthenticatedAppIndexRoute: AuthenticatedAppIndexRoute,
+}
+
+const AuthenticatedAppRouteWithChildren =
+  AuthenticatedAppRoute._addFileChildren(AuthenticatedAppRouteChildren)
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAppRoute: typeof AuthenticatedAppRouteWithChildren
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAppRoute: AuthenticatedAppRouteWithChildren,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   CopilotRoute: CopilotRoute,
   LabRoute: LabRoute,
   RankingsRoute: RankingsRoute,
