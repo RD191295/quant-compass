@@ -1,9 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@tanstack/react-router';
 
+// Old address kept working after the workspace moved under /app.
 export const Route = createFileRoute('/watchlists')({
-  component: RouteComponent,
-})
-
-function RouteComponent() {
-  return <div>Hello "/watchlists"!</div>
-}
+  beforeLoad: () => { throw redirect({ to: '/app/watchlists', statusCode: 301 }); },
+});
