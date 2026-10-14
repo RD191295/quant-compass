@@ -11,13 +11,18 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CopilotRouteImport } from './routes/copilot'
 import { Route as LabRouteImport } from './routes/lab'
+import { Route as MethodologyRouteImport } from './routes/methodology'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RankingsRouteImport } from './routes/rankings'
 import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as RiskDisclosureRouteImport } from './routes/risk-disclosure'
 import { Route as ScreenerRouteImport } from './routes/screener'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as StocksRouteImport } from './routes/stocks'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as WatchlistsRouteImport } from './routes/watchlists'
 import { Route as AuthenticatedAppRouteImport } from './routes/_authenticated/app'
 import { Route as AuthenticatedAppIndexRouteImport } from './routes/_authenticated/app.index'
@@ -41,6 +46,11 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CopilotRoute = CopilotRouteImport.update({
   id: '/copilot',
   path: '/copilot',
@@ -51,6 +61,16 @@ const LabRoute = LabRouteImport.update({
   path: '/lab',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MethodologyRoute = MethodologyRouteImport.update({
+  id: '/methodology',
+  path: '/methodology',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RankingsRoute = RankingsRouteImport.update({
   id: '/rankings',
   path: '/rankings',
@@ -59,6 +79,11 @@ const RankingsRoute = RankingsRouteImport.update({
 const ReportsRoute = ReportsRouteImport.update({
   id: '/reports',
   path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RiskDisclosureRoute = RiskDisclosureRouteImport.update({
+  id: '/risk-disclosure',
+  path: '/risk-disclosure',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ScreenerRoute = ScreenerRouteImport.update({
@@ -74,6 +99,11 @@ const SettingsRoute = SettingsRouteImport.update({
 const StocksRoute = StocksRouteImport.update({
   id: '/stocks',
   path: '/stocks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WatchlistsRoute = WatchlistsRouteImport.update({
@@ -148,13 +178,18 @@ const AuthenticatedAppWatchlistsRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/copilot': typeof CopilotRoute
   '/lab': typeof LabRoute
+  '/methodology': typeof MethodologyRoute
+  '/privacy': typeof PrivacyRoute
   '/rankings': typeof RankingsRoute
   '/reports': typeof ReportsRoute
+  '/risk-disclosure': typeof RiskDisclosureRoute
   '/screener': typeof ScreenerRoute
   '/settings': typeof SettingsRoute
   '/stocks': typeof StocksRoute
+  '/terms': typeof TermsRoute
   '/watchlists': typeof WatchlistsRoute
   '/app': typeof AuthenticatedAppRouteWithChildren
   '/app/copilot': typeof AuthenticatedAppCopilotRoute
@@ -171,13 +206,18 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/copilot': typeof CopilotRoute
   '/lab': typeof LabRoute
+  '/methodology': typeof MethodologyRoute
+  '/privacy': typeof PrivacyRoute
   '/rankings': typeof RankingsRoute
   '/reports': typeof ReportsRoute
+  '/risk-disclosure': typeof RiskDisclosureRoute
   '/screener': typeof ScreenerRoute
   '/settings': typeof SettingsRoute
   '/stocks': typeof StocksRoute
+  '/terms': typeof TermsRoute
   '/watchlists': typeof WatchlistsRoute
   '/app/copilot': typeof AuthenticatedAppCopilotRoute
   '/app/lab': typeof AuthenticatedAppLabRoute
@@ -195,13 +235,18 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/contact': typeof ContactRoute
   '/copilot': typeof CopilotRoute
   '/lab': typeof LabRoute
+  '/methodology': typeof MethodologyRoute
+  '/privacy': typeof PrivacyRoute
   '/rankings': typeof RankingsRoute
   '/reports': typeof ReportsRoute
+  '/risk-disclosure': typeof RiskDisclosureRoute
   '/screener': typeof ScreenerRoute
   '/settings': typeof SettingsRoute
   '/stocks': typeof StocksRoute
+  '/terms': typeof TermsRoute
   '/watchlists': typeof WatchlistsRoute
   '/_authenticated/app': typeof AuthenticatedAppRouteWithChildren
   '/_authenticated/app/copilot': typeof AuthenticatedAppCopilotRoute
@@ -220,13 +265,18 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/contact'
     | '/copilot'
     | '/lab'
+    | '/methodology'
+    | '/privacy'
     | '/rankings'
     | '/reports'
+    | '/risk-disclosure'
     | '/screener'
     | '/settings'
     | '/stocks'
+    | '/terms'
     | '/watchlists'
     | '/app'
     | '/app/copilot'
@@ -243,13 +293,18 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/contact'
     | '/copilot'
     | '/lab'
+    | '/methodology'
+    | '/privacy'
     | '/rankings'
     | '/reports'
+    | '/risk-disclosure'
     | '/screener'
     | '/settings'
     | '/stocks'
+    | '/terms'
     | '/watchlists'
     | '/app/copilot'
     | '/app/lab'
@@ -266,13 +321,18 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_authenticated'
+    | '/contact'
     | '/copilot'
     | '/lab'
+    | '/methodology'
+    | '/privacy'
     | '/rankings'
     | '/reports'
+    | '/risk-disclosure'
     | '/screener'
     | '/settings'
     | '/stocks'
+    | '/terms'
     | '/watchlists'
     | '/_authenticated/app'
     | '/_authenticated/app/copilot'
@@ -291,13 +351,18 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  ContactRoute: typeof ContactRoute
   CopilotRoute: typeof CopilotRoute
   LabRoute: typeof LabRoute
+  MethodologyRoute: typeof MethodologyRoute
+  PrivacyRoute: typeof PrivacyRoute
   RankingsRoute: typeof RankingsRoute
   ReportsRoute: typeof ReportsRoute
+  RiskDisclosureRoute: typeof RiskDisclosureRoute
   ScreenerRoute: typeof ScreenerRoute
   SettingsRoute: typeof SettingsRoute
   StocksRoute: typeof StocksRoute
+  TermsRoute: typeof TermsRoute
   WatchlistsRoute: typeof WatchlistsRoute
 }
 
@@ -317,6 +382,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/copilot': {
       id: '/copilot'
       path: '/copilot'
@@ -331,6 +403,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LabRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/methodology': {
+      id: '/methodology'
+      path: '/methodology'
+      fullPath: '/methodology'
+      preLoaderRoute: typeof MethodologyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rankings': {
       id: '/rankings'
       path: '/rankings'
@@ -343,6 +429,13 @@ declare module '@tanstack/react-router' {
       path: '/reports'
       fullPath: '/reports'
       preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/risk-disclosure': {
+      id: '/risk-disclosure'
+      path: '/risk-disclosure'
+      fullPath: '/risk-disclosure'
+      preLoaderRoute: typeof RiskDisclosureRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/screener': {
@@ -364,6 +457,13 @@ declare module '@tanstack/react-router' {
       path: '/stocks'
       fullPath: '/stocks'
       preLoaderRoute: typeof StocksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/watchlists': {
@@ -505,13 +605,18 @@ const AuthenticatedRouteRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  ContactRoute: ContactRoute,
   CopilotRoute: CopilotRoute,
   LabRoute: LabRoute,
+  MethodologyRoute: MethodologyRoute,
+  PrivacyRoute: PrivacyRoute,
   RankingsRoute: RankingsRoute,
   ReportsRoute: ReportsRoute,
+  RiskDisclosureRoute: RiskDisclosureRoute,
   ScreenerRoute: ScreenerRoute,
   SettingsRoute: SettingsRoute,
   StocksRoute: StocksRoute,
+  TermsRoute: TermsRoute,
   WatchlistsRoute: WatchlistsRoute,
 }
 export const routeTree = rootRouteImport
