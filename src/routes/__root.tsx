@@ -79,10 +79,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Quant Intelligence" },
+      { title: "Quant Compass" },
       { name: "description", content: "Indian equity research workspace" },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Quant Intelligence" },
+      { property: "og:title", content: "Quant Compass" },
       { property: "og:description", content: "Indian equity research workspace" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
