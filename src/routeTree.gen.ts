@@ -14,6 +14,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CopilotRouteImport } from './routes/copilot'
 import { Route as LabRouteImport } from './routes/lab'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as MethodologyRouteImport } from './routes/methodology'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RankingsRouteImport } from './routes/rankings'
@@ -21,6 +22,7 @@ import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as RiskDisclosureRouteImport } from './routes/risk-disclosure'
 import { Route as ScreenerRouteImport } from './routes/screener'
 import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SignupRouteImport } from './routes/signup'
 import { Route as StocksRouteImport } from './routes/stocks'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as WatchlistsRouteImport } from './routes/watchlists'
@@ -61,6 +63,11 @@ const LabRoute = LabRouteImport.update({
   path: '/lab',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MethodologyRoute = MethodologyRouteImport.update({
   id: '/methodology',
   path: '/methodology',
@@ -94,6 +101,11 @@ const ScreenerRoute = ScreenerRouteImport.update({
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StocksRoute = StocksRouteImport.update({
@@ -181,6 +193,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/copilot': typeof CopilotRoute
   '/lab': typeof LabRoute
+  '/login': typeof LoginRoute
   '/methodology': typeof MethodologyRoute
   '/privacy': typeof PrivacyRoute
   '/rankings': typeof RankingsRoute
@@ -188,6 +201,7 @@ export interface FileRoutesByFullPath {
   '/risk-disclosure': typeof RiskDisclosureRoute
   '/screener': typeof ScreenerRoute
   '/settings': typeof SettingsRoute
+  '/signup': typeof SignupRoute
   '/stocks': typeof StocksRoute
   '/terms': typeof TermsRoute
   '/watchlists': typeof WatchlistsRoute
@@ -209,6 +223,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/copilot': typeof CopilotRoute
   '/lab': typeof LabRoute
+  '/login': typeof LoginRoute
   '/methodology': typeof MethodologyRoute
   '/privacy': typeof PrivacyRoute
   '/rankings': typeof RankingsRoute
@@ -216,6 +231,7 @@ export interface FileRoutesByTo {
   '/risk-disclosure': typeof RiskDisclosureRoute
   '/screener': typeof ScreenerRoute
   '/settings': typeof SettingsRoute
+  '/signup': typeof SignupRoute
   '/stocks': typeof StocksRoute
   '/terms': typeof TermsRoute
   '/watchlists': typeof WatchlistsRoute
@@ -238,6 +254,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/copilot': typeof CopilotRoute
   '/lab': typeof LabRoute
+  '/login': typeof LoginRoute
   '/methodology': typeof MethodologyRoute
   '/privacy': typeof PrivacyRoute
   '/rankings': typeof RankingsRoute
@@ -245,6 +262,7 @@ export interface FileRoutesById {
   '/risk-disclosure': typeof RiskDisclosureRoute
   '/screener': typeof ScreenerRoute
   '/settings': typeof SettingsRoute
+  '/signup': typeof SignupRoute
   '/stocks': typeof StocksRoute
   '/terms': typeof TermsRoute
   '/watchlists': typeof WatchlistsRoute
@@ -268,6 +286,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/copilot'
     | '/lab'
+    | '/login'
     | '/methodology'
     | '/privacy'
     | '/rankings'
@@ -275,6 +294,7 @@ export interface FileRouteTypes {
     | '/risk-disclosure'
     | '/screener'
     | '/settings'
+    | '/signup'
     | '/stocks'
     | '/terms'
     | '/watchlists'
@@ -296,6 +316,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/copilot'
     | '/lab'
+    | '/login'
     | '/methodology'
     | '/privacy'
     | '/rankings'
@@ -303,6 +324,7 @@ export interface FileRouteTypes {
     | '/risk-disclosure'
     | '/screener'
     | '/settings'
+    | '/signup'
     | '/stocks'
     | '/terms'
     | '/watchlists'
@@ -324,6 +346,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/copilot'
     | '/lab'
+    | '/login'
     | '/methodology'
     | '/privacy'
     | '/rankings'
@@ -331,6 +354,7 @@ export interface FileRouteTypes {
     | '/risk-disclosure'
     | '/screener'
     | '/settings'
+    | '/signup'
     | '/stocks'
     | '/terms'
     | '/watchlists'
@@ -354,6 +378,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CopilotRoute: typeof CopilotRoute
   LabRoute: typeof LabRoute
+  LoginRoute: typeof LoginRoute
   MethodologyRoute: typeof MethodologyRoute
   PrivacyRoute: typeof PrivacyRoute
   RankingsRoute: typeof RankingsRoute
@@ -361,6 +386,7 @@ export interface RootRouteChildren {
   RiskDisclosureRoute: typeof RiskDisclosureRoute
   ScreenerRoute: typeof ScreenerRoute
   SettingsRoute: typeof SettingsRoute
+  SignupRoute: typeof SignupRoute
   StocksRoute: typeof StocksRoute
   TermsRoute: typeof TermsRoute
   WatchlistsRoute: typeof WatchlistsRoute
@@ -401,6 +427,13 @@ declare module '@tanstack/react-router' {
       path: '/lab'
       fullPath: '/lab'
       preLoaderRoute: typeof LabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/methodology': {
@@ -450,6 +483,13 @@ declare module '@tanstack/react-router' {
       path: '/settings'
       fullPath: '/settings'
       preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/stocks': {
@@ -608,6 +648,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CopilotRoute: CopilotRoute,
   LabRoute: LabRoute,
+  LoginRoute: LoginRoute,
   MethodologyRoute: MethodologyRoute,
   PrivacyRoute: PrivacyRoute,
   RankingsRoute: RankingsRoute,
@@ -615,6 +656,7 @@ const rootRouteChildren: RootRouteChildren = {
   RiskDisclosureRoute: RiskDisclosureRoute,
   ScreenerRoute: ScreenerRoute,
   SettingsRoute: SettingsRoute,
+  SignupRoute: SignupRoute,
   StocksRoute: StocksRoute,
   TermsRoute: TermsRoute,
   WatchlistsRoute: WatchlistsRoute,
