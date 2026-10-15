@@ -18,7 +18,7 @@ function CandleShape({ x = 0, y = 0, width = 0, height = 0, payload }: CandleSha
 
 function CandleTip({ active, payload }: { active?: boolean; payload?: { payload: Candle }[] }) {
   if (!active || !payload?.length) return null;
-  const c = payload[0].payload;
+  const c = payload[0]?.payload; if (!c) return null;
   return <div className="qe-tip"><strong>{c.t}</strong><span>O {fmt(c.open)}</span><span>H {fmt(c.high)}</span><span>L {fmt(c.low)}</span><span>C {fmt(c.close)}</span><em>Demo data</em></div>;
 }
 
