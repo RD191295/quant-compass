@@ -1,4 +1,4 @@
-import { useRef, useState, type ReactNode } from 'react';
+import { useRef, useState, type ReactNode, type RefObject } from 'react';
 import { Link } from '@tanstack/react-router';
 import { ArrowRight, ArrowUp, BarChart3, Bot, Brain, ChartCandlestick, ChartNoAxesCombined, Factory, FlaskConical, Layers, Loader2, Menu, Search, Sparkles, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -49,7 +49,7 @@ export function Ticker() {
   </div>;
 }
 
-export function Hero({ inputRef }: { inputRef: React.RefObject<HTMLTextAreaElement | null> }) {
+export function Hero({ inputRef }: { inputRef: RefObject<HTMLTextAreaElement | null> }) {
   const [q, setQ] = useState('');
   const [state, setState] = useState<{ q: string; a: string | null } | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
