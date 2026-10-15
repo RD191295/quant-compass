@@ -190,3 +190,21 @@ input,select,textarea {background:var(--background);border:1px solid var(--borde
 .date-label{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 11px;border:1px solid var(--border);border-radius:4px;font-size:11px;white-space:nowrap;}
 .search-toggle{display:none;}
 @media(max-width:767px){.global-search{display:flex;position:static;width:29px;}.search-toggle{display:inline-flex;}.global-search .desktop-search-icon{display:none;}.global-search.search-open{position:absolute;left:12px;right:12px;top:12px;width:auto;background:var(--popover);border:1px solid var(--border);border-radius:4px;z-index:50;padding:0 5px;}.global-search.search-open input{display:block;height:35px;}.global-search.search-open .search-results{width:100%;top:41px;}.global-search.search-open .search-toggle{flex-shrink:0;}}
+
+/* Homepage palette (scoped) */
+.qe-home {
+  --background: #0B0F19; --foreground: #F1F5F9; --card: #121826; --card-foreground: #F1F5F9;
+  --popover: #182131; --popover-foreground: #F1F5F9; --elevated: #182131;
+  --border: #263244; --input: #263244; --primary: #3B82F6; --primary-foreground: #F8FAFC; --ring: #3B82F6;
+  --accent-sky: #38BDF8; --positive: #22C55E; --negative: #EF4444;
+  --muted: #182131; --muted-foreground: #94A3B8; --accent: #182131; --accent-foreground: #F1F5F9;
+  --secondary: #182131; --secondary-foreground: #F1F5F9;
+  --primary-tint: color-mix(in oklab, #3B82F6 12%, transparent);
+  font-family: "Geist", "IBM Plex Sans", sans-serif; font-size: 14px;
+}
+.qe-home .font-mono { font-family: "Geist Mono", var(--font-mono); font-variant-numeric: tabular-nums; }
+@theme inline { --color-elevated: var(--elevated); --color-accent-sky: var(--accent-sky); }
+.qe-demo { display:inline-flex; align-items:center; white-space:nowrap; flex-shrink:0; border:1px solid var(--border); border-radius:3px; padding:1px 6px; font-size:10px; text-transform:uppercase; letter-spacing:.06em; color:var(--warning); }
+.qe-noscroll { scrollbar-width:none; } .qe-noscroll::-webkit-scrollbar { display:none; }
+.qe-tip { display:flex; flex-direction:column; gap:2px; background:var(--popover); border:1px solid var(--border); border-radius:4px; padding:6px 8px; font-size:11px; font-family:var(--font-mono); }
+.qe-tip em { color:var(--warning); font-style:normal; font-size:10px; }
