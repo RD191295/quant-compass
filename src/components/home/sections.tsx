@@ -116,7 +116,7 @@ export function Dashboard() {
   const [inst, setInst] = useState<InstrumentName>('NIFTY 50');
   const [tf, setTf] = useState<Timeframe>('1D');
   const candles = getCandles(inst, tf);
-  const last = candles[candles.length - 1]; const first = candles[0];
+  const last = candles[candles.length - 1]!; const first = candles[0]!;
   const chg = ((last.close - first.open) / first.open) * 100;
   const total = breadth.advances + breadth.declines + breadth.unchanged;
   return <section id="dashboard" className="scroll-mt-16 border-t border-border">
