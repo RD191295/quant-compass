@@ -13,12 +13,14 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CopilotRouteImport } from './routes/copilot'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LabRouteImport } from './routes/lab'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as MethodologyRouteImport } from './routes/methodology'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RankingsRouteImport } from './routes/rankings'
 import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as RiskDisclosureRouteImport } from './routes/risk-disclosure'
 import { Route as ScreenerRouteImport } from './routes/screener'
 import { Route as SettingsRouteImport } from './routes/settings'
@@ -58,6 +60,11 @@ const CopilotRoute = CopilotRouteImport.update({
   path: '/copilot',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LabRoute = LabRouteImport.update({
   id: '/lab',
   path: '/lab',
@@ -86,6 +93,11 @@ const RankingsRoute = RankingsRouteImport.update({
 const ReportsRoute = ReportsRouteImport.update({
   id: '/reports',
   path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RiskDisclosureRoute = RiskDisclosureRouteImport.update({
@@ -192,12 +204,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/copilot': typeof CopilotRoute
+  '/forgot-password': typeof ForgotPasswordRoute
   '/lab': typeof LabRoute
   '/login': typeof LoginRoute
   '/methodology': typeof MethodologyRoute
   '/privacy': typeof PrivacyRoute
   '/rankings': typeof RankingsRoute
   '/reports': typeof ReportsRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/risk-disclosure': typeof RiskDisclosureRoute
   '/screener': typeof ScreenerRoute
   '/settings': typeof SettingsRoute
@@ -222,12 +236,14 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/copilot': typeof CopilotRoute
+  '/forgot-password': typeof ForgotPasswordRoute
   '/lab': typeof LabRoute
   '/login': typeof LoginRoute
   '/methodology': typeof MethodologyRoute
   '/privacy': typeof PrivacyRoute
   '/rankings': typeof RankingsRoute
   '/reports': typeof ReportsRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/risk-disclosure': typeof RiskDisclosureRoute
   '/screener': typeof ScreenerRoute
   '/settings': typeof SettingsRoute
@@ -253,12 +269,14 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/contact': typeof ContactRoute
   '/copilot': typeof CopilotRoute
+  '/forgot-password': typeof ForgotPasswordRoute
   '/lab': typeof LabRoute
   '/login': typeof LoginRoute
   '/methodology': typeof MethodologyRoute
   '/privacy': typeof PrivacyRoute
   '/rankings': typeof RankingsRoute
   '/reports': typeof ReportsRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/risk-disclosure': typeof RiskDisclosureRoute
   '/screener': typeof ScreenerRoute
   '/settings': typeof SettingsRoute
@@ -285,12 +303,14 @@ export interface FileRouteTypes {
     | '/'
     | '/contact'
     | '/copilot'
+    | '/forgot-password'
     | '/lab'
     | '/login'
     | '/methodology'
     | '/privacy'
     | '/rankings'
     | '/reports'
+    | '/reset-password'
     | '/risk-disclosure'
     | '/screener'
     | '/settings'
@@ -315,12 +335,14 @@ export interface FileRouteTypes {
     | '/'
     | '/contact'
     | '/copilot'
+    | '/forgot-password'
     | '/lab'
     | '/login'
     | '/methodology'
     | '/privacy'
     | '/rankings'
     | '/reports'
+    | '/reset-password'
     | '/risk-disclosure'
     | '/screener'
     | '/settings'
@@ -345,12 +367,14 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/contact'
     | '/copilot'
+    | '/forgot-password'
     | '/lab'
     | '/login'
     | '/methodology'
     | '/privacy'
     | '/rankings'
     | '/reports'
+    | '/reset-password'
     | '/risk-disclosure'
     | '/screener'
     | '/settings'
@@ -377,12 +401,14 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   ContactRoute: typeof ContactRoute
   CopilotRoute: typeof CopilotRoute
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
   LabRoute: typeof LabRoute
   LoginRoute: typeof LoginRoute
   MethodologyRoute: typeof MethodologyRoute
   PrivacyRoute: typeof PrivacyRoute
   RankingsRoute: typeof RankingsRoute
   ReportsRoute: typeof ReportsRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   RiskDisclosureRoute: typeof RiskDisclosureRoute
   ScreenerRoute: typeof ScreenerRoute
   SettingsRoute: typeof SettingsRoute
@@ -420,6 +446,13 @@ declare module '@tanstack/react-router' {
       path: '/copilot'
       fullPath: '/copilot'
       preLoaderRoute: typeof CopilotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lab': {
@@ -462,6 +495,13 @@ declare module '@tanstack/react-router' {
       path: '/reports'
       fullPath: '/reports'
       preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/risk-disclosure': {
@@ -647,12 +687,14 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   ContactRoute: ContactRoute,
   CopilotRoute: CopilotRoute,
+  ForgotPasswordRoute: ForgotPasswordRoute,
   LabRoute: LabRoute,
   LoginRoute: LoginRoute,
   MethodologyRoute: MethodologyRoute,
   PrivacyRoute: PrivacyRoute,
   RankingsRoute: RankingsRoute,
   ReportsRoute: ReportsRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   RiskDisclosureRoute: RiskDisclosureRoute,
   ScreenerRoute: ScreenerRoute,
   SettingsRoute: SettingsRoute,
