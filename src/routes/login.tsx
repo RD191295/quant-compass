@@ -48,6 +48,7 @@ function Login() {
       {error && <p className="text-sm text-destructive">{error}</p>}
       <Button type="submit" disabled={busy}>Sign in</Button>
       <Button type="button" variant="outline" onClick={google}>Continue with Google</Button>
+      <p className="text-center text-sm text-muted-foreground"><Link to="/forgot-password" className="text-primary">Forgot password?</Link></p>
       <p className="text-sm text-muted-foreground">New here? <Link to="/signup" className="text-primary">Create an account</Link></p>
     </form>
   </MarketingLayout>;
