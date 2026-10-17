@@ -132,19 +132,20 @@ export function SettingsPage() {
 function SettingsForm({ w }: { w: NonNullable<ReturnType<typeof useWorkspace>['data']> }) {
   const [fullName, setFullName] = useState(w.fullName);
   const [prefs, setPrefs] = useState(w.preferences);
-  const [pw, setPw] = useState({ next: '' });
+  const [pw, setPw] = useState({ current: '', next: '' });
   const [pwBusy, setPwBusy] = useState(false);
   const profile = useWorkspaceMutation((i: { fullName: string }) => updateProfile({ data: i }), 'Profile saved');
   const preferences = useWorkspaceMutation((i: typeof prefs) => updatePreferences({ data: i }), 'Preferences saved');
   async function changePassword(e: React.FormEvent) {
     e.preventDefault();
+    if (!pw.current) { toast.error('Enter your current password'); return; }
     const parsed = newPasswordSchema.safeParse(pw.next);
     if (!parsed.success) { toast.error(parsed.error.issues[0]?.message ?? 'Choose a stronger password'); return; }
     setPwBusy(true);
-    const { error } = await supabase.auth.updateUser({ password: pw.next });
+    const { error } = await supabase.auth.updateUser({ password: pw.next, current_password: pw.current });
     setPwBusy(false);
     if (error) toast.error('Could not change your password. Please try again.');
-    else { toast.success('Password updated'); setPw({ next: '' }); }
+    else { toast.success('Password updated'); setPw({ current: '', next: '' }); }
   }
   return <div className="page-content max-w-3xl">
     <PageHeader title="Settings" description="Manage your profile, preferences and security." />
@@ -173,8 +174,10 @@ function SettingsForm({ w }: { w: NonNullable<ReturnType<typeof useWorkspace>['d
     <section className="research-panel">
       <SectionTitle title="Change password" />
       <form className="flex flex-col gap-3 px-5 pb-5" onSubmit={changePassword}>
+        <Label htmlFor="current">Current password</Label>
+        <Input id="current" type="password" autoComplete="current-password" value={pw.current} onChange={(e) => setPw({ ...pw, current: e.target.value })} required />
         <Label htmlFor="new">New password</Label>
-        <Input id="new" type="password" autoComplete="new-password" value={pw.next} onChange={(e) => setPw({ next: e.target.value })} />
+        <Input id="new" type="password" autoComplete="new-password" value={pw.next} onChange={(e) => setPw({ ...pw, next: e.target.value })} />
         <Button type="submit" size="sm" className="self-start" disabled={pwBusy}>Update password</Button>
       </form>
     </section>
