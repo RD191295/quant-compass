@@ -7,5 +7,6 @@
 - [x] Add current-password field to signed-in password changes and recovery-only reset access; regression tests pass. Actual password change is not exercised on the owner's account.
 - [x] DB-backed watchlists, saved research, profile and preferences via authed server functions.
 - [x] Verify signed-in watchlist and saved-research persistence and deletion.
-- [ ] Verify sign-out.
-- [ ] Verify signup confirmation, emailed password reset and Google sign-in (requires external email/provider flow).
+- [x] Verify sign-out redirects to sign-in and blocks protected pages.
+- [ ] Verify signup confirmation and emailed password reset: blocked on a fresh delivered email link; previous temporary inbox is unavailable. Default auth emails do not require a custom domain.
+- [ ] Verify Google sign-in: blocked on interactive Google account authorization, unavailable in the automated browser.
