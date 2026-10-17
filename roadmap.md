@@ -4,7 +4,8 @@
 - [x] Marketing, legal and contact pages with per-route metadata.
 - [x] Sign up / sign in / sign out with Zod validation and safe redirects.
 - [x] Forgot-password and reset-password flows with recovery-link handling.
-- [ ] Correct password changes and recovery-only reset access; add regression tests.
+- [x] Add current-password field to signed-in password changes and recovery-only reset access; regression tests pass. Actual password change is not exercised on the owner's account.
 - [x] DB-backed watchlists, saved research, profile and preferences via authed server functions.
-- [ ] Verify signed-in watchlist and saved-research persistence, deletion and sign-out.
+- [x] Verify signed-in watchlist and saved-research persistence and deletion.
+- [ ] Verify sign-out.
 - [ ] Verify signup confirmation, emailed password reset and Google sign-in (requires external email/provider flow).
