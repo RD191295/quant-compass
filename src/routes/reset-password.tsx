@@ -5,7 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { supabase } from '@/integrations/supabase/client';
 import { MarketingLayout, marketingHead } from '@/components/marketing/layout';
-import { resetSchema } from '@/lib/auth/schemas';
+import { parseRecoveryHash, resetSchema } from '@/lib/auth/schemas';
+import { recoveryState } from '@/lib/auth/recovery';
 
 export const Route = createFileRoute('/reset-password')({
   ssr: false,
@@ -23,13 +24,17 @@ function ResetPassword() {
 
   useEffect(() => {
     let cancelled = false;
+    if (parseRecoveryHash(window.location.hash) === 'error') {
+      setStatus('expired');
+      return;
+    }
     // The recovery link signs the user in; the auth client may still be exchanging
     // the code when we first read the session, so retry briefly.
     (async () => {
       for (let attempt = 0; attempt < 5; attempt++) {
         const { data } = await supabase.auth.getUser();
         if (cancelled) return;
-        if (data.user) { setStatus('ready'); return; }
+        if (data.user && recoveryState.allows(data.user.id)) { setStatus('ready'); return; }
         await new Promise((r) => setTimeout(r, 600));
       }
       if (!cancelled) setStatus('expired');
@@ -39,13 +44,15 @@ function ResetPassword() {
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
+    const { data } = await supabase.auth.getUser();
+    if (!data.user || !recoveryState.allows(data.user.id)) { setStatus('expired'); return; }
     const p = resetSchema.safeParse({ password, confirmPassword });
     if (!p.success) { setError(p.error.issues[0]?.message ?? 'Check your details'); return; }
     setBusy(true);
     const { error: err } = await supabase.auth.updateUser({ password: p.data.password });
     setBusy(false);
     if (err) setError('Could not update your password. Request a fresh reset link and try again.');
-    else setDone(true);
+    else { recoveryState.clear(); setDone(true); }
   }
 
   return <MarketingLayout>

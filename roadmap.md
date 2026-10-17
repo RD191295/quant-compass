@@ -4,7 +4,9 @@
 - [x] Marketing, legal and contact pages with per-route metadata.
 - [x] Sign up / sign in / sign out with Zod validation and safe redirects.
 - [x] Forgot-password and reset-password flows with recovery-link handling.
-- [x] Settings password change using the real auth API (new password only).
+- [x] Add current-password field to signed-in password changes and recovery-only reset access; regression tests pass. Actual password change is not exercised on the owner's account.
 - [x] DB-backed watchlists, saved research, profile and preferences via authed server functions.
-- [ ] End-to-end browser verification: sign up, sign in, watchlist CRUD, reset link, Google sign-in.
-- [ ] Optional: custom transactional email templates for confirmation and recovery.
+- [x] Verify signed-in watchlist and saved-research persistence and deletion.
+- [x] Verify sign-out redirects to sign-in and blocks protected pages.
+- [ ] Verify signup confirmation and emailed password reset: blocked on a fresh delivered email link; previous temporary inbox is unavailable. Default auth emails do not require a custom domain.
+- [ ] Verify Google sign-in: blocked on interactive Google account authorization, unavailable in the automated browser.

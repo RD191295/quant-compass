@@ -14,3 +14,7 @@
 - Use Recharts for research charts and the shared shadcn-based StockTable for sortable equity views to keep visuals and interactions consistent.
 - Content pages use file-based TanStack routes with individual metadata, shared loaders, and a root research shell to preserve navigation and loading boundaries.
 - Keep backend quantitative models outside browser code; frontend research outputs are supplied, precomputed data only.
+
+## Account security
+- Password-reset access uses an ephemeral, user-bound PASSWORD_RECOVERY event recorded by the root auth listener; ordinary sessions never unlock the recovery form.
+- Signed-in password changes collect and send the current password; recovery changes omit it because Auth validates the recovery session.
