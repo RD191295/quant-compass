@@ -1,4 +1,5 @@
 # Quant Compass full-stack upgrade
+- [ ] Connect an externally hosted Python market-data API; waiting for API availability and authorized data-provider details.
 - [x] Enable Lovable Cloud; profiles, preferences, watchlists, watchlist_items, saved_research with RLS and signup trigger.
 - [x] Rebrand to Quant Compass; public homepage at /, research workspace under /app behind sign-in.
 - [x] Marketing, legal and contact pages with per-route metadata.
